@@ -58,17 +58,8 @@
     <h1>Grupo Musculares</h1>
     <a href="" class="btn btn-outline-success">Novo Grupo Muscular</a>
  </div>
-
- <div class="mt-4">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th>Ações</th>
-                    <th>Nome</th>
-                  </tr>
-                </thead>
-              </table>
-            </div>
+<div>
+</div>
 </main>
 
 
