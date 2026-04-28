@@ -7,62 +7,29 @@
     <title>Index - PHP</title>
 </head>
 <body>
-    <nav class="navbar navbar-dark bg-dark fixed-top">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Personal PRO</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Dark offcanvas</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-      </div>
-      <div class="offcanvas-body">
-        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-          <li class="nav-item">
-            <a class="nav-link" href="index.php">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="gmuscular.php">Grupo Muscular</a>
-            
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Exercícios</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown
-            </a>
-            <ul class="dropdown-menu dropdown-menu-dark">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li>
-        </ul>
-        <form class="d-flex mt-3" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-          <button class="btn btn-success" type="submit">Search</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</nav>
+<?php require_once "_parts/_menu.php" ?>
 
-<main class="container">
- <div class="mt-5 d-flex justify-content-between p-5">
-    <h1>Grupo Musculares</h1>
-    <a href="" class="btn btn-outline-success">Novo Grupo Muscular</a>
- </div>
-<div>
+<main class="container" style="margin-top: 80px">
+<div class="md-5">
+  <h4>Cadastro de Grupo Muscular</h4>
 </div>
+<!-- existe dois tipo de enviar o formulario o post e o get, a diferença que o pot vai em um envelope, e o get vai no href -->
+<div class="card">
+  <form action="" method="post" class="row g3 mt-3 p-3">
+    <div class="col-12">
+      <label for="nome" class="form-label">Nome</label>
+      <input type="text" class="form-control" name="nome" id="nome" class="form-control" placeholder="Nome do grupo muscular">
+    </div>
+    
+    <div class="col-12 mt-3">
+      <a href="gmuscular.php" class="btn btn-outline-secondary">Voltar</a>
+      <button type="submit" class="btn btn-primary">Salvar</button>
+    </div>
+    
+  </form>
+</div>
+
 </main>
-
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
