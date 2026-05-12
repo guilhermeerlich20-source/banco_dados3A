@@ -3,6 +3,11 @@ class TabelaInterativa {
     #tabela;
     #corpoTabela;
     #campo;
+    #campoColuna;
+    #msgVazio;
+    #paginacao;
+    #itensPorPagina;
+    #paginaAtual;
 
     constructor(config) {
         this.#config = config;
@@ -12,6 +17,7 @@ class TabelaInterativa {
       this.#tabela = document.getElementById(this.#config.tabelaId);
       this.#campo = document.getElementById(this.#config.campoId);
       this.#corpoTabela = this.#tabela.querySelector('tbody');
+      this.#msgVazio = document.getElementById(this.#config.msgVazioId);
 
       this.#campo.addEventListener('input', () => {
         this.#filtrar();
@@ -30,5 +36,9 @@ class TabelaInterativa {
                 linha.classList.add('d-none');
             }
         });
+
+        const visiveis = this.#corpoTabela.querySelectorAll('tr:not(.d-none)');
+        console.log(visiveis);
+        this.#msgVazio.classList.toggle('d-none',visiveis.length>0);
     }
 }

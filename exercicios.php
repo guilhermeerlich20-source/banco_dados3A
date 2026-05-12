@@ -47,13 +47,16 @@
          <td><?php echo $ex->nome; ?></td>
          <td class="text-center">
            <a href="#" class="btn btn-sm btn-secondary" ><i class="bi bi-eye"></i></a>
-          <a href="#" class="btn btn-sm btn-success" ><i class="bi bi-pencil-square"></i></a>
+          <a href="ger-exercicio.php?id=<?= $ex->idexercicio ?>" class="btn btn-sm btn-success" ><i class="bi bi-pencil-square"></i></a>
           <a href="#" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></a>
         </td>
       </tr>
       <?php endforeach; ?>
     </tbody>
   </table>
+  <div id="msg-vazio" class="d-flex justify-content-center alert alert-info p-3 d-none">
+    ℹ️ Nenhum exercício encontrado para o filtro digitado.
+  </div>
 </div>
 </main>
 
