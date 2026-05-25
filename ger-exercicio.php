@@ -27,24 +27,25 @@ if(filter_has_var(INPUT_GET,"id")) {
 <!-- existe dois tipo de enviar o formulario o post e o get, a diferença que o pot vai em um envelope, e o get vai no href -->
 <div class="card">
   <form action="db-exercicio.php" method="post" class="row g3 mt-3 p-3">
+    <input type="hidden" name="id" value="<?= $id ?? null ?>">
     <div class="col-12">
       <label for="nome" class="form-label">Nome do exercício</label>
-      <input type="text" class="form-control" name="nome" id="nome" class="form-control" placeholder="Nome do exercício" required value="<?=  $exercicio->nome ?>">
+      <input type="text" class="form-control" name="nome" id="nome" class="form-control" required value="<?=  $exercicio->nome ?? null;?>">
     </div>
     <div class="com-12">
       <label for="descricao" class="form-label">Descrição do exercício</label>
-      <textarea name="descricao" id="descricao" class="form-control" placeholder="Descrição do exercício"><?= $exercicio->descricao ?></textarea>
+      <textarea name="descricao" id="descricao" class="form-control" placeholder="Descrição do exercício"><?= $exercicio->descricao ?? null;?></textarea>
     </div>
 
     <div class="col-md-6">
       <label for="grupoMuscular" class="form-label">Grupo Muscular</label>
       <?php
-      $grupoSel = $exercicio->grupo_muscular ?? '';
+      $grupoSel = $exercicio->grupo_muscular ?? null;
       ?>
       <select name="grupoMuscular" id="grupoMuscular" class="form-select">
        <option>Selecione um grupo</option>
        <?php foreach ($gruposMusculares as $grupo): ?>
-        <option value="<?php $grupo ?>"
+        <option value="<?= $grupo ?>"
         <?php
         if($grupo == $grupoSel) echo "selected"; 
         ?>

@@ -3,8 +3,8 @@
 class Exercicio extends CRUD {
    protected $table = "exercicio";
 
-   private $id;
-   private $nome;
+  private ?int $id = null;
+  private $nome;
 
    private $descricao;
 
@@ -20,24 +20,30 @@ class Exercicio extends CRUD {
    }
 
    public function update() {
-      // Implement update logic here
+      $sql = "UPDATE $this->table SET nome = :nome, descricao = :descricao, grupo_muscular = :grupoMuscular WHERE idexercicio = :id";
+      $stmt = $this->db->prepare($sql);
+      $stmt->bindParam(":id",$this->id, PDO::PARAM_INT);
+      $stmt->bindParam(':nome', $this->nome, PDO::PARAM_STR);
+      $stmt->bindParam(':descricao', $this->descricao, PDO::PARAM_STR);
+      $stmt->bindParam(':grupoMuscular', $this->grupomuscular, PDO::PARAM_STR);
+      return $stmt->execute();
    }
 
-   public function getid($id) {
+   public function getid() {
      return $this->id;
-     }
+   }
 
-     public function getNome($nome) {
-       return $this->nome;
-     }
+   public function getNome() {
+     return $this->nome;
+   }
 
-     public function getDescricao($descricao) {
-       return $this->descricao;
-     }
+   public function getDescricao() {
+     return $this->descricao;
+   }
 
-     public function getGrupoMuscular($grupomuscular) {
-       return $this->grupomuscular;
-     }
+   public function getGrupoMuscular() {
+     return $this->grupomuscular;
+   }
 
    public function setid($id) {
      $this->id = $id;

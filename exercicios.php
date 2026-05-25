@@ -17,8 +17,10 @@
    });
 
    $exercicio = new Exercicio();
-   $exercicios = $exercicio->all();
+
+$exercicios = $exercicio->all();
   ?>
+
 
 <main class="container">
  <div class="mt-5 d-flex justify-content-between p-5">
@@ -44,16 +46,27 @@
      ?>
        <tr>
          <td class="text-center"><?= $ex->idexercicio ?></td>
+         
          <td><?php echo $ex->nome; ?></td>
-         <td class="text-center">
-           <a href="#" class="btn btn-sm btn-secondary" ><i class="bi bi-eye"></i></a>
+
+         <!-- Botões editar excluir -->
+         <td class="text-center d-flex gap-1 justify-content-center">
+          <a href="#" class="btn btn-sm btn-secondary" ><i class="bi bi-eye"></i></a>
           <a href="ger-exercicio.php?id=<?= $ex->idexercicio ?>" class="btn btn-sm btn-success" ><i class="bi bi-pencil-square"></i></a>
-          <a href="#" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></a>
+          <!-- botão excluir -->
+          <form action="db-exercicio.php" method="post" >
+            <input type="hidden" name="id" value="<?= $ex->idexercicio ?>">
+            <button type="submit" name="btnExcluir" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja excluir este exercício?');">
+              <i class="bi bi-trash"></i>
+            </button>
+          </form>
         </td>
+
       </tr>
       <?php endforeach; ?>
     </tbody>
   </table>
+  
   <div id="msg-vazio" class="d-flex justify-content-center alert alert-info p-3 d-none">
     ℹ️ Nenhum exercício encontrado para o filtro digitado.
   </div>
