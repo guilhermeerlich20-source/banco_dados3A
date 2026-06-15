@@ -85,4 +85,23 @@ abstract class CRUD {
          $stmt->bindParam(':id', $id, PDO::PARAM_INT);
          return $stmt->execute();
       }
+
+      public function sp_banco(string $procedimento){
+         $sql = "CALL {$procedimento}";
+         $stmt = $this->db->prepare($sql);
+         $stmt->execute();
+         return $stmt->fetchAll(PDO::FETCH_OBJ);
+      }
+
+      public function iniciarTransacao(){
+         $this->db->beginTransaction();
+      }
+
+      public function confirmarTransacao(){
+         $this->db->commit();
+      }
+
+      public function cancelarTransacao(){
+         $this->db->rollBack();
+      }
 }

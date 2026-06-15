@@ -1,44 +1,44 @@
-class TabelaInterativa {
+class TabelaInterativa{
     #config;
     #tabela;
     #corpoTabela;
-    #campo;
+    #campoFiltro;
     #campoColuna;
     #msgVazio;
     #paginacao;
     #itensPorPagina;
     #paginaAtual;
 
-    constructor(config) {
+    constructor(config){
         this.#config = config;
     }
 
     iniciar(){
-      this.#tabela = document.getElementById(this.#config.tabelaId);
-      this.#campo = document.getElementById(this.#config.campoId);
-      this.#corpoTabela = this.#tabela.querySelector('tbody');
-      this.#msgVazio = document.getElementById(this.#config.msgVazioId);
+        this.#tabela = document.getElementById(this.#config.tabelaId);
+        this.#campoFiltro = document.getElementById(this.#config.filtroId);
+        this.#corpoTabela = this.#tabela.querySelector('tbody');
+        this.#msgVazio = document.getElementById(this.#config.msgVazioId);
 
-      this.#campo.addEventListener('input', () => {
-        this.#filtrar();
-    });
-   }
+        this.#campoFiltro.addEventListener('input',()=>{
+            this.#filtrar();
+        });
+    }
 
-    #filtrar() {
-        const termo = this.#campo.value.toLowerCase();
+    #filtrar(){
+            const termo = this.#campoFiltro.value.toLowerCase();
         const linhas = this.#corpoTabela.querySelectorAll('tr');
 
-        linhas.forEach((linha) => {
+        linhas.forEach((linha)=>{
             let texto = linha.textContent.toLowerCase();
-            if(texto.includes(termo)) {
+            if(texto.includes(termo)){
                 linha.classList.remove('d-none');
-            } else {
+            }else{
                 linha.classList.add('d-none');
             }
         });
 
-        const visiveis = this.#corpoTabela.querySelectorAll('tr:not(.d-none)');
+        const visiveis = this.#corpoTabela.querySelectorAll('tr:not(.d-done)');
         console.log(visiveis);
-        this.#msgVazio.classList.toggle('d-none',visiveis.length>0);
+        this.#msgVazio.classList.toggle('d-none',visiveis.length > 0);
     }
 }
